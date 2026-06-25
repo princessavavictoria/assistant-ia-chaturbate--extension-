@@ -37,7 +37,7 @@ Pour que les données des clients s'enregistrent correctement :
 3. Ouvrez Google Chrome et allez à l'adresse : chrome://extensions/
 4. En haut à droite, activez le "Mode développeur" (Developer mode).
 5. Cliquez sur "Charger l'extension non empaquetée" (Load unpacked) en haut à gauche.
-6. Sélectionnez le dossier **dist** qui se trouve à l'intérieur du dossier décompressé (c'est ce dossier "dist" qui contient directement le fichier `manifest.json` pré-compilé).
+6. Sélectionnez le dossier **extension-pret-a-installer** qui se trouve à l'intérieur du dossier décompressé (ce dossier contient directement le fichier `manifest.json` pré-compilé et prêt à l'emploi).
 7. L'extension apparaîtra dans votre liste ! Épinglez-la à votre barre d'outils (icône de pièce de puzzle) pour un accès facile.
 
 ---------------------------------------------------------
