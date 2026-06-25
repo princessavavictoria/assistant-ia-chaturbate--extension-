@@ -1,0 +1,64 @@
+=========================================================
+GUIDE D'INSTALLATION - CB AI ASSISTANT (EXTENSION CHROME)
+=========================================================
+
+Cette extension est conçue pour fonctionner de manière autonome en tant que Sidebar (Panneau latéral) sur Google Chrome. Elle lit automatiquement le chat, profile les utilisateurs via Firebase et génère des réponses via l'API Gemini.
+
+NOTE IMPORTANTE SUR LE "RATE EXCEEDED" OU "ERREUR DE PREVIEW" :
+L'interface de test (Preview) sur le site web AI Studio possède des limites strictes de taux de requêtes (rate limits) et de sécurité qui peuvent bloquer la génération ou afficher "Rate exceeded".
+Une fois installée localement sur votre navigateur Chrome en tant qu'extension, l'application fonctionnera de manière totalement autonome en utilisant DIRECTEMENT vos propres clés Gemini et Firebase sans AUCUNE restriction ni filtre intermédiaire !
+
+---------------------------------------------------------
+ÉTAPE 1 : OBTENIR UNE CLÉ API GOOGLE GEMINI
+---------------------------------------------------------
+1. Allez sur Google AI Studio : https://aistudio.google.com/app/apikey
+2. Connectez-vous avec votre compte Google.
+3. Cliquez sur "Create API Key" (Créer une clé API).
+4. Copiez cette clé. Vous en aurez besoin dans les paramètres de l'extension.
+
+---------------------------------------------------------
+ÉTAPE 2 : CONFIGURATION FIREBASE (PRÉ-CONFIGURÉ POUR VOUS !)
+---------------------------------------------------------
+Bonne nouvelle ! Vos informations Firebase ont déjà été pré-remplies automatiquement dans le code de l'application :
+- Projet ID : assistant-ava-victoria
+- Base de données : Firestore Database (veillez à activer Firestore dans la console Firebase et à choisir "Démarrer en mode test" ou à autoriser l'accès en lecture/écriture).
+
+Pour que les données des clients s'enregistrent correctement :
+1. Allez sur votre console Firebase : https://console.firebase.google.com/u/0/project/assistant-ava-victoria/firestore
+2. Si ce n'est pas déjà fait, cliquez sur "Créer une base de données".
+3. Choisissez l'emplacement le plus proche (ex: us-east ou europe-west).
+4. Pour l'étape "Règles de sécurité", choisissez "Démarrer en mode test" (cela permet à l'extension d'écrire l'historique de vos clients en toute simplicité).
+
+---------------------------------------------------------
+ÉTAPE 3 : EXPORTER ET INSTALLER L'EXTENSION DANS CHROME
+---------------------------------------------------------
+1. Cliquez sur le bouton "Exporter" (Export to ZIP / GitHub) dans le menu Paramètres de Google AI Studio en haut à droite.
+2. Téléchargez le dossier ZIP et décompressez-le sur votre ordinateur.
+3. Ouvrez Google Chrome et allez à l'adresse : chrome://extensions/
+4. En haut à droite, activez le "Mode développeur" (Developer mode).
+5. Cliquez sur "Charger l'extension non empaquetée" (Load unpacked) en haut à gauche.
+6. Sélectionnez le dossier **dist** qui se trouve à l'intérieur du dossier décompressé (c'est ce dossier "dist" qui contient directement le fichier `manifest.json` pré-compilé).
+7. L'extension apparaîtra dans votre liste ! Épinglez-la à votre barre d'outils (icône de pièce de puzzle) pour un accès facile.
+
+---------------------------------------------------------
+ÉTAPE 4 : CONFIGURER L'EXTENSION
+---------------------------------------------------------
+1. Ouvrez un onglet sur Chaturbate (votre salon ou un salon de test).
+2. Cliquez sur l'icône de l'extension dans votre barre d'outils Chrome. Le panneau latéral (Sidebar) s'ouvrira à droite de votre écran.
+3. Collez votre clé API Gemini (étape 1) dans le champ prévu et enregistrez.
+4. Vos instructions Ava Victoria personnalisées sont déjà pré-configurées par défaut comme System Instructions !
+
+---------------------------------------------------------
+ÉTAPE 5 : UTILISATION EN SALON
+---------------------------------------------------------
+- Laissez la Sidebar ouverte pendant vos shows.
+- Dès qu'un utilisateur envoie un message dans le chat de votre salon, le script détecte son message automatiquement.
+- L'extension récupère l'historique de cet utilisateur sur votre Firestore.
+- Elle génère une suggestion de réponse sexy, directe et personnalisée avec votre ton "Ava Victoria" (avec accent québécois léger, émojis adaptés et tutoiement !).
+- Le texte s'affiche en gros plan sur le Téléprompteur. Vous n'avez qu'à le lire à haute voix !
+
+---------------------------------------------------------
+CONFIDENTIALITÉ ET CONTRÔLE
+---------------------------------------------------------
+- Vos clés API et paramètres sont sauvegardés de façon 100 % sécurisée dans le stockage local de votre navigateur (`chrome.storage.local`).
+- Les historiques clients sont uniquement enregistrés dans votre propre base de données privée Firestore. Aucun serveur tiers n'a accès à vos données.

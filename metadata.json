@@ -1,0 +1,8 @@
+{
+  "name": "Assistant IA Chaturbate (Extension)",
+  "description": "Extension Chrome autonome pour lire le chat, générer des réponses Gemini et stocker l'historique client Firebase.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
