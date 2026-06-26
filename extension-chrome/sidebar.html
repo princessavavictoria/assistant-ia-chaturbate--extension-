@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>CB AI Assistant - Side Panel</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #f9fafb;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- L'iframe charge DIRECTEMENT l'application hébergée sur Google Cloud Run -->
+  <iframe id="app-frame" src="https://ais-pre-qonu5wnowma2xprcgqpthg-210427082196.us-west2.run.app"></iframe>
+
+  <script src="sidebar.js"></script>
+</body>
+</html>

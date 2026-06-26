@@ -9,6 +9,8 @@ import Sidebar from './components/Sidebar';
 import { AppSettings } from './types';
 import { initFirebase } from './lib/firebase';
 
+declare const chrome: any;
+
 const SETTINGS_KEY = 'cb_ai_assistant_settings';
 
 export default function App() {

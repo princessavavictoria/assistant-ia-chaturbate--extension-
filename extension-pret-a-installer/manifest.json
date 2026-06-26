@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "CB AI Assistant",
+  "version": "1.0",
+  "description": "Assistant IA pour générer des réponses sur Chaturbate.",
+  "permissions": [
+    "sidePanel",
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://chaturbate.com/*",
+    "https://*.chaturbate.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chaturbate.com/*",
+        "https://*.chaturbate.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_title": "Ouvrir l'assistant IA"
+  },
+  "side_panel": {
+    "default_path": "index.html"
+  }
+}

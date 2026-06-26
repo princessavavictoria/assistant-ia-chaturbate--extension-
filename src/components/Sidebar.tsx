@@ -5,6 +5,8 @@ import { getClientProfile, saveClientProfile, getDashboardStats } from '../lib/f
 import { Settings as SettingsIcon, MessageSquare, User, BarChart3, AlertCircle, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
+declare const chrome: any;
+
 interface SidebarProps {
   settings: AppSettings;
   onOpenSettings: () => void;
@@ -29,17 +31,32 @@ export default function Sidebar({ settings, onOpenSettings, updateSettings, isFi
   useEffect(() => {
     loadStats();
     
-    // Listen for messages from content script
+    // Listen for messages from content script (direct extension OR iframe postMessage)
     const messageListener = (request: any) => {
       if (request.type === 'NEW_CHAT_MESSAGE') {
         handleNewMessage(request.payload as ChatMessage);
       }
     };
 
+    const handlePostMessage = (event: MessageEvent) => {
+      if (event.data && event.data.type === 'NEW_CHAT_MESSAGE') {
+        handleNewMessage(event.data.payload as ChatMessage);
+      }
+    };
+
+    window.addEventListener('message', handlePostMessage);
+
     if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.onMessage) {
       chrome.runtime.onMessage.addListener(messageListener);
-      return () => chrome.runtime.onMessage.removeListener(messageListener);
+      return () => {
+        chrome.runtime.onMessage.removeListener(messageListener);
+        window.removeEventListener('message', handlePostMessage);
+      };
     }
+
+    return () => {
+      window.removeEventListener('message', handlePostMessage);
+    };
   }, []);
 
   const loadStats = async () => {
